@@ -1,0 +1,14 @@
+from db.mongo_handler import load_mongo_data
+from utils.completion_rate import completion_rate
+from utils.make_graph import make_daily_completion_rate_graph
+from utils.make_graph import make_parent_completion_rate_graph
+from utils.make_graph import make_daily_completion_time_graph
+from utils.make_graph import make_parent_completion_time_graph
+from utils.make_graph import make_parent_completion_reward_graph
+from utils.make_graph import make_daily_approval_time_graph
+from utils.make_graph import make_parent_approval_time_graph
+
+
+target_id = '72474ee2a388a1d05e88e89ce507f795'
+result = make_parent_completion_time_graph(target_id)
+print(result)
