@@ -9,6 +9,6 @@ from utils.make_graph import make_daily_approval_time_graph
 from utils.make_graph import make_parent_approval_time_graph
 
 
-target_id = '72474ee2a388a1d05e88e89ce507f795'
-result = make_parent_completion_time_graph(target_id)
+target_id = '2de604dc-68f7-45b7-ad0b-ad1a63a2fc0b'
+result = make_daily_completion_rate_graph(target_id)
 print(result)

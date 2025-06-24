@@ -43,6 +43,9 @@ def completion_rate(df):
         }).fillna(0)
         result["completion_rate"] = result["approved_count"] / result["total_count"]
         result = result.reset_index().rename(columns={"index": group_col})
+        
+        # group_col과 completion_rate만 추출
+        result = result[[group_col, "completion_rate"]]
     else:
         raise ValueError("혼합 데이터셋은 현재 지원하지 않습니다. daily/parent 분리해서 주세요.")
 
