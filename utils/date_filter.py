@@ -1,5 +1,6 @@
 from datetime import datetime, timedelta
 import pandas as pd
+from db.mongo_handler import load_mongo_data
 
 def filter_date(df):
     # 날짜 컬럼을 datetime으로 변환
@@ -12,6 +13,6 @@ def filter_date(df):
     end_datetime = datetime.combine(today, datetime.max.time())
 
      # 필터링: start_date ~ 오늘 자정까지 (시간 포함)
-    df = df[(df["actionTime"] >= start_datetime) & (df["actionTime"] <= end_datetime)]
+    df = df[(df["actionTime"] >= start_datetime)]
 
     return df
