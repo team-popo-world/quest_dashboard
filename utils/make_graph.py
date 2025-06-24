@@ -92,9 +92,9 @@ def make_parent_approval_time_graph(childId, filter: bool = False):
     }
 
 # 일일퀘스트 평균 승인대기시간 함수
-def make_parent_approval_time_graph(childId, filter: bool = False):
-    global df_parent
-    df = df_parent[df_parent["childId"] == childId].copy()
+def make_daily_approval_time_graph(childId, filter: bool = False):
+    global df_daily
+    df = df_daily[df_daily["childId"] == childId].copy()
     if filter:
         df = filter_date(df)
     result = approval_time(df)
