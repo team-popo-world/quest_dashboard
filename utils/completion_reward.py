@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 
 def completion_reward(df):
     """
@@ -7,12 +8,17 @@ def completion_reward(df):
     """
     # 1. label별 집계
     # (label, reward, completion_rate) DataFrame 만들기
-    group = df.groupby("label").agg(
-        reward=("rewardPoint", "mean"),  # 또는 sum, max 등 원하는 방식
+    df = df.copy()
+    df["actionTime"] = pd.to_datetime(df["actionTime"])
+    latest_status = df.sort_values("actionTime").groupby("questId").tail(1)
+
+    # 집계
+    group = latest_status.groupby("label").agg(
+        reward=("rewardPoint", "mean"),
         total_count=("label", "count"),
-        approved_count=("currentState", lambda x: (x == "APPROVED").sum())
+        completed_count=("currentState", lambda x: (x == "COMPLETED").sum())
     ).reset_index()
-    group["completion_rate"] = group["approved_count"] / group["total_count"]
+    group["completion_rate"] = group["completed_count"] / group["total_count"]
 
     # 2. 리턴용 리스트
     result = []
