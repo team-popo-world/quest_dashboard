@@ -10,5 +10,5 @@ from utils.make_graph import make_parent_approval_time_graph
 
 
 target_id = '8a2b94b0-8395-41ad-99b0-6e8c0ea7edaa'
-result = make_parent_completion_reward_graph(target_id)
+result = make_parent_completion_time_graph(target_id)
 print(result)

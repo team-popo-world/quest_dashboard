@@ -33,7 +33,7 @@ def daily_completion_time(df):
         distribution = [{"time_bin": label, "count": int(dist[label])} for label in labels]
         result.append({"quest_name": quest, "distribution": distribution})
     
-    return {"result": result}
+    return result
 
 def parent_completion_time(df):
     """
@@ -69,4 +69,4 @@ def parent_completion_time(df):
         distribution = [{"time_bin": lbl, "count": int(dist[lbl])} for lbl in labels]
         result.append({"label": label_name, "distribution": distribution})
     
-    return {"result": result}
+    return result
